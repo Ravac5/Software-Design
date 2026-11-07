@@ -1,29 +1,34 @@
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.Properties;
+
 public class ConfFile {
-    private String PathArchivoConfig;
-    private static ConfFile configuracion;
+    private static volatile ConfFile conf;
+    private Properties prop = new Properties();
 
-    public static void initialize(String PathArchivoConfig){
-        if (configuracion != null){
-           throw new IllegalStateException("Already Created");
+    public static synchronized ConfFile initialize(String path){
+        if (conf == null) {
+            conf = new ConfFile(path);
+            return conf;
         }
-        synchronized(ConfFile.class){
-            if (configuracion == null){
-                configuracion = new ConfFile(PathArchivoConfig);
-            } else {
-                throw new IllegalStateException("Already Created");
-            }
+        return conf;
+    }
+
+    private ConfFile(String path){
+        try (FileInputStream archivo = new FileInputStream(path)) {
+            prop.load(archivo);
+        } catch (IOException e) {
+            throw new IllegalStateException("no se pudo cargar la configuracion", e);
         }
     }
 
-    private ConfFile(String PathArchivoConfig){
-        this.PathArchivoConfig = PathArchivoConfig;
+    public static ConfFile getInstance(){
+        if (conf == null){
+            throw new IllegalStateException("configuracion no inicializada");
+        }
+        return conf;
     }
-
-    public static String getConf(){
-        return configuracion.PathArchivoConfig;
-    }
-
-    public static void setConf(String Path){
-        configuracion.PathArchivoConfig = Path;
+    public String getValor(String clave) {
+        return prop.getProperty(clave);
     }
 }
