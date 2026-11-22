@@ -2,7 +2,7 @@
 
 # Explicacion
 
-En este ejercicio se realiza una conexion a una base de datos MySQL y para eso necesitaremos compilar y ejecutar nuestro programa utilizando [JDBC](https://dev.mysql.com/downloads/connector/j/) y lo colocaremos en la misma carpeta que los archivos .java.
+En este ejercicio se realiza una conexion a una base de datos MySQL y para eso necesitaremos compilar y ejecutar nuestro programa utilizando [JDBC](https://dev.mysql.com/downloads/connector/j/) y colocaremos el .tar en la misma carpeta que los archivos .java.
 
 Flag de compilacion
 ```
