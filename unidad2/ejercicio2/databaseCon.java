@@ -6,9 +6,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class databaseCon {
-    private static final String url = "jdbc:mysql://localhost:3306/database";
-    private static final String username = "test";
-    private static final String password = "test";
+    private static String url = "jdbc:mysql://localhost:3306/database";
+    private static String username = "";
+    private static String password = "";
     private static databaseCon instance;
 
     public static databaseCon getInstance(){
@@ -41,8 +41,7 @@ public class databaseCon {
     }
 
     public void selectQuery(String sqlQuery){
-        try (Connection connection = DriverManager.getConnection(url, username, password); Statement stmt = connection.createStatement()) {
-            ResultSet rs = stmt.executeQuery(sqlQuery);
+        try (Connection connection = DriverManager.getConnection(url, username, password); Statement stmt = connection.createStatement(); ResultSet rs = stmt.executeQuery(sqlQuery)) {
             ResultSetMetaData metaData = rs.getMetaData();
 
             System.out.println("------------------------");
@@ -59,5 +58,15 @@ public class databaseCon {
         } catch (SQLException e){
             throw new IllegalStateException("No se pudo realizar la consulta!" ,e);
         }
+    }
+    public static void databaseUrl(String parameter){
+        url = "jdbc:mysql://" + parameter;
+    }
+
+    public static void selectUsername(String parameter){
+        username = parameter;
+    }
+    public static void selectPassword(String parameter){
+        password = parameter;
     }
 }
