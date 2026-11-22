@@ -4,6 +4,6 @@ en este repositorio se encuentran las resoluciones a distintos problemas aplican
 
 # Patrones
 
-## 1. [Singleton](unidad2/)
-## 2. [Factory]()
-## 3. [Observer]()
+1. [Singleton](unidad2/)
+2. [Factory]()
+3. [Observer]()
