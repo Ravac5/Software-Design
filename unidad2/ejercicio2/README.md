@@ -1,6 +1,6 @@
-## Ejercicio 2
+# Ejercicio 2
 
-# Explicacion
+## Explicacion
 
 En este ejercicio se realiza una conexion a una base de datos MySQL y para eso necesitaremos compilar y ejecutar nuestro programa utilizando [JDBC](https://dev.mysql.com/downloads/connector/j/) y colocaremos el .tar en la misma carpeta que los archivos .java.
 
@@ -13,7 +13,7 @@ Flag de ejecucion
 ```
 java -cp ".:mysql-connector-j-26.10.0.jar" ejercicio2main
 ```
-# Imagenes
+## Imagenes
 
 ![imagen1](../../imagenes/imagen1ejercicio2.png)
 
